@@ -9,8 +9,12 @@
     <li class="list-group-item">Email: {{$user->email}}</li>
     <li class="list-group-item">Created: {{$user->created_at->format('d.m.Y h:m')}}</li>
     <li class="list-group-item">Updated: {{$user->updated_at->format('d.m.Y h:m')}}</li>
-    <li><a class="btn btn-warning mt-1" href={{route("users.edit",$user->id)}}>Обновить</a></li>
-    <li><a class="btn btn-danger mt-1" href={{route("users.destroy",$user->id)}}>Удалить</a></li>
+    <form action={{route("users.destroy",$user->id)}} method="POST">
+        <td><a class="btn btn-warning" href={{route("users.edit",$user->id)}}>Обновить</a></td>
+        @csrf
+        @method("DELETE")
+        <td><button class="btn btn-danger" type="submit">Удалить</button></td>
+    </form>
   </ol>
 
 @endsection

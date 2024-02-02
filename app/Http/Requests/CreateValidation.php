@@ -23,7 +23,7 @@ class CreateValidation extends FormRequest
     {
         return [
             "name" => ['required','min:2','max:255'],
-            "email" => ['required','min:7',"max:255","email"],
+            "email" => ['required','min:7',"max:255","email",'unique:users'],
         ];
     }
 }

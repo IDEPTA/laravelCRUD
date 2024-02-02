@@ -23,7 +23,7 @@
                 name="name" type="text" class="form-control" placeholder="Name" aria-label="Name">
         </div>
         @error('name')
-            <div class="row">
+            <div class="m-3 row alert alert-danger">
                 {{ $message }}
             </div>
         @enderror
@@ -36,7 +36,7 @@
                 name="email" type="text" class="form-control" placeholder="Email" aria-label="Email">
         </div>
         @error('email') {{-- Fix the error field name --}}
-            <div class="row">
+            <div class="m-3 row alert alert-danger">
                 {{ $message }}
             </div>
         @enderror

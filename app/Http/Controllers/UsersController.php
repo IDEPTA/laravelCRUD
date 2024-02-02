@@ -13,7 +13,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $user = User::orderBy("id",'DESC')->get();
+        $user = User::orderBy("id",'DESC')->paginate(10);
         return view("index", ['data' => $user]);
     }
 
@@ -55,9 +55,10 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(CreateValidation $request, User $user)
     {
-        $user->update($request->only(['name','email']));
+        $req = $request->validated();
+        $user->update($req);
         return redirect()->route("users.index");
     }
 

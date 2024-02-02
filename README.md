@@ -1,12 +1,12 @@
 ### Установка
 
-## Установить PHP-8+
+Установить PHP-8+
 
-## Установить MySQL
+Установить MySQL
 
-## Установить COMPOSER
+Установить COMPOSER
 
-## cd var/www
+cd var/www
 
 git clone ... folder
 

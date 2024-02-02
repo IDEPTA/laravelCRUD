@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateValidation;
 
 class UsersController extends Controller
 {
@@ -12,7 +13,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $user = User::get();
+        $user = User::orderBy("id",'DESC')->get();
         return view("index", ['data' => $user]);
     }
 
@@ -27,9 +28,11 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateValidation $request)
     {
-        //
+        $req = $request->validated();
+        User::create($req);
+        return redirect()->route("users.index");
     }
 
     /**
@@ -37,7 +40,8 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        return view("show");
+
+        //return view("show");
     }
 
     /**
@@ -45,7 +49,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        return view("form",compact('user'));
+        return view("form",['user' => $user]);
     }
 
     /**
@@ -53,7 +57,8 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->only(['name','email']));
+        return redirect()->route("users.index");
     }
 
     /**

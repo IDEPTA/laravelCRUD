@@ -1,16 +1,19 @@
 @extends('layout')
 @section('title')
-    <h1>Usersg</h1>
+    <h1>Users</h1>
 @endsection
 @section('content')
+<a class="btn btn-success" href={{route("users.create")}}>Добавить запись</a>
 <table class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Emal</th>
-        <th scope="col">created</th>
-        <th scope="col">updated</th>
+        <th scope="col">Created</th>
+        <th scope="col">Updated</th>
+        <th scope="col">Обновить</th>
+        <th scope="col">Удалить</th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +24,8 @@
                 <td>{{$item->email}}</td>
                 <td>{{$item->created_at}}</td>
                 <td>{{$item->updated_at}}</td>
+                <td><a class="btn btn-warning" href={{route("users.edit",$item->id)}}>Обновить</a></td>
+                <td><a class="btn btn-danger" href={{route("users.edit",$item->id)}}>Удалить</a></td>
             </tr>
         @endforeach
     </tbody>

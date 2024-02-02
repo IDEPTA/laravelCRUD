@@ -12,6 +12,7 @@
         <th scope="col">Emal</th>
         <th scope="col">Created</th>
         <th scope="col">Updated</th>
+        <th scope="col">Просмотр</th>
         <th scope="col">Обновить</th>
         <th scope="col">Удалить</th>
       </tr>
@@ -24,8 +25,9 @@
                 <td>{{$item->email}}</td>
                 <td>{{$item->created_at}}</td>
                 <td>{{$item->updated_at}}</td>
+                <td><a class="btn btn-info" href={{route("users.show",$item->id)}}>Просмотр</a></td>
                 <td><a class="btn btn-warning" href={{route("users.edit",$item->id)}}>Обновить</a></td>
-                <td><a class="btn btn-danger" href={{route("users.edit",$item->id)}}>Удалить</a></td>
+                <td><a class="btn btn-danger" href={{route("users.destroy",$item->id)}}>Удалить</a></td>
             </tr>
         @endforeach
     </tbody>
